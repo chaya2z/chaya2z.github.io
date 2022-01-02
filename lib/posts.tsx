@@ -46,7 +46,7 @@ export function getAllPostIds(year = '**', month = '**', date = '**') {
 
 export function getSortedPostsData(year, month, date) {
     // Get only file names ( not dir name ) under /posts
-    const fileNames = getAllPostIds(year = '**', month = '**', date = '**')
+    const fileNames = getAllPostIds(year, month, date)
     const allPostsData = fileNames.map(fileName => {
         // Remove ".md" from file name to get id
         const id = fileName.params.id.replace(/\.md$/, '')
@@ -67,7 +67,7 @@ export function getSortedPostsData(year, month, date) {
             year,
             month,
             date,
-            ...matterResult.data
+            ...(matterResult.data as { created_at: string; title: string })
         }
     })
     // Sort posts by date
@@ -102,6 +102,6 @@ export async function getPostData(id, year, month, date) {
         month,
         date,
         contentHtml,
-        ...matterResult.data
+        ...(matterResult.data as { created_at: string; title: string })
     }
 }
