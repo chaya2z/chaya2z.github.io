@@ -1,0 +1,41 @@
+name: Deploy Next.js app
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.16.1
+
+      - uses: actions/cache@v1.0.3
+        with:
+          path: ~/.npm
+          key: node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            node -
+
+      - name: npm ci
+        run: npm ci
+
+      - name: next build
+        run: next build
+        env:
+          URL_PREFIX: blog.chaya2z
+
+      - name: Export Next.js app
+        run: npm run export
+
+      - name: Deployment
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: out
