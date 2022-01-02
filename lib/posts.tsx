@@ -44,7 +44,7 @@ export function getAllPostIds(year = '**', month = '**', date = '**') {
     )
 }
 
-export function getSortedPostsData(year, month, date) {
+export function getSortedPostsData(year?: string, month?: string, date?: string) {
     // Get only file names ( not dir name ) under /posts
     const fileNames = getAllPostIds(year, month, date)
     const allPostsData = fileNames.map(fileName => {
