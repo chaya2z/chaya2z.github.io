@@ -43,7 +43,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-    const allMonthPostsData = getSortedPostsData(params.year, params.month)
+    const allMonthPostsData = getSortedPostsData(params.year as string, params.month as string)
     return {
         props: {
             allMonthPostsData
