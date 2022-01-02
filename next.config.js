@@ -3,6 +3,6 @@ module.exports = {
     trailingSlash: true,
     images: {
         loader: 'imgix',
-        path: "",
+        path: `${process.env.GITHUB_ACTIONS}/blog.chaya2z/`,
     }
 };
