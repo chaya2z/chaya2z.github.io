@@ -3,6 +3,6 @@ module.exports = {
     trailingSlash: true,
     images: {
         loader: 'imgix',
-        path: `/`,
+        path: `https://chaya2z.github.io/blog.chaya2z`,
     }
 };
