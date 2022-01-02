@@ -1,8 +1,22 @@
-module.exports = {
-    basePath: process.env.GITHUB_ACTIONS ? "/blog.chaya2z" : "",
-    trailingSlash: true,
-    images: {
-        loader: 'imgix',
-        path: `https://chaya2z.github.io/blog.chaya2z`,
+module.exports = () => {
+    // Environment: GitHub Actions
+    if (process.env.GITHUB_ACTIONS) {
+        return {
+            basePath: "/blog.chaya2z",
+            trailingSlash: true,
+            images: {
+                loader: 'imgix',
+                path: process.env.GITHUB_ACTIONS_IMG_PATH,
+            }
+        }
     }
-};
+    // Environment: Local
+    return {
+        basePath: "",
+        trailingSlash: true,
+        images: {
+            loader: 'imgix',
+            path: process.env.LOCAL_IMG_PATH
+        }
+    }
+}
