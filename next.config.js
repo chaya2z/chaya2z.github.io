@@ -2,7 +2,7 @@ module.exports = () => {
     // Environment: GitHub Actions
     if (process.env.GITHUB_ACTIONS) {
         return {
-            basePath: "/blog.chaya2z",
+            basePath: "",
             trailingSlash: true,
             images: {
                 loader: 'imgix',
