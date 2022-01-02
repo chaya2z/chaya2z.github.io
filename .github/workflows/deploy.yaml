@@ -26,8 +26,8 @@ jobs:
       - name: npm ci
         run: npm ci
 
-      - name: next build
-        run: next build
+      - name: npm run build
+        run: npm run build
         env:
           URL_PREFIX: blog.chaya2z
 
