@@ -4,6 +4,7 @@ import utilStyles from '../../../styles/utils.module.css'
 import Head from "next/head";
 import Link from "next/link";
 import Date from "../../../components/date";
+import { GetStaticProps, GetStaticPaths } from "next";
 
 export default function eachMonthPostsList({ allMonthPostsData }) {
     return (
@@ -33,7 +34,7 @@ export default function eachMonthPostsList({ allMonthPostsData }) {
 }
 
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
     const paths = getAllPostIds()
     return {
         paths,
@@ -41,7 +42,7 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({ params }) {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
     const allMonthPostsData = getSortedPostsData(params.year, params.month)
     return {
         props: {
