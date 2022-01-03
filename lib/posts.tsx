@@ -1,14 +1,14 @@
-import fs from 'fs'
-import path from 'path'
-import matter from 'gray-matter'
-import { remark } from 'remark'
-import html from 'remark-html'
-import glob from "glob"
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
+import glob from "glob";
 
-const postsDirectory = path.join(process.cwd(), 'posts')
+const postsDirectory = path.join(process.cwd(), "posts");
 
-export function getAllPostIds(year = '**', month = '**', date = '**') {
-    const files = glob.sync(`posts/${year}/${month}/${date}/*.md`)
+export function getAllPostIds(year = "**", month = "**", date = "**") {
+    const files = glob.sync(`posts/${year}/${month}/${date}/*.md`);
 
     // Returns an array that looks like this:
     // [
@@ -29,37 +29,42 @@ export function getAllPostIds(year = '**', month = '**', date = '**') {
     //         }
     //     }
     // ]
-    return (
-        files.map(filePath => {
-            const pathArray = filePath.split('/');
-            return ({
-                params: {
-                    id: pathArray[4].replace(/\.md$/, ''),
-                    year: pathArray[1],
-                    month: pathArray[2],
-                    date: pathArray[3]
-                }
-            })
-        })
-    )
+    return files.map((filePath) => {
+        const pathArray = filePath.split("/");
+        return {
+            params: {
+                id: pathArray[4].replace(/\.md$/, ""),
+                year: pathArray[1],
+                month: pathArray[2],
+                date: pathArray[3],
+            },
+        };
+    });
 }
 
-export function getSortedPostsData(year?: string, month?: string, date?: string) {
+export function getSortedPostsData(
+    year?: string,
+    month?: string,
+    date?: string
+) {
     // Get only file names ( not dir name ) under /posts
-    const fileNames = getAllPostIds(year, month, date)
-    const allPostsData = fileNames.map(fileName => {
+    const fileNames = getAllPostIds(year, month, date);
+    const allPostsData = fileNames.map((fileName) => {
         // Remove ".md" from file name to get id
-        const id = fileName.params.id.replace(/\.md$/, '')
-        const year = fileName.params.year
-        const month = fileName.params.month
-        const date = fileName.params.date
+        const id = fileName.params.id.replace(/\.md$/, "");
+        const year = fileName.params.year;
+        const month = fileName.params.month;
+        const date = fileName.params.date;
 
         // Read markdown file as string
-        const fullPath = path.join(postsDirectory, `/${year}/${month}/${date}/${id}.md`)
-        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const fullPath = path.join(
+            postsDirectory,
+            `/${year}/${month}/${date}/${id}.md`
+        );
+        const fileContents = fs.readFileSync(fullPath, "utf8");
 
         // Use gray-matter to parse the post metadata section
-        const matterResult = matter(fileContents)
+        const matterResult = matter(fileContents);
 
         // Combine the data with the id
         return {
@@ -67,33 +72,36 @@ export function getSortedPostsData(year?: string, month?: string, date?: string)
             year,
             month,
             date,
-            ...(matterResult.data as { created_at: string; title: string })
-        }
-    })
+            ...(matterResult.data as { created_at: string; title: string }),
+        };
+    });
     // Sort posts by date
     return allPostsData.sort(({ date: a }, { date: b }) => {
         if (a < b) {
-            return 1
+            return 1;
         } else if (a > b) {
-            return -1
+            return -1;
         } else {
-            return 0
+            return 0;
         }
-    })
+    });
 }
 
 export async function getPostData(id, year, month, date) {
-    const fullPath = path.join(postsDirectory, `/${year}/${month}/${date}/${id}.md`)
-    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const fullPath = path.join(
+        postsDirectory,
+        `/${year}/${month}/${date}/${id}.md`
+    );
+    const fileContents = fs.readFileSync(fullPath, "utf8");
 
     // Use gray-matter to parse the post metadata section
-    const matterResult = matter(fileContents)
+    const matterResult = matter(fileContents);
 
     // Use remark to convert markdown into HTML string
     const processedContent = await remark()
         .use(html)
-        .process(matterResult.content)
-    const contentHtml = processedContent.toString()
+        .process(matterResult.content);
+    const contentHtml = processedContent.toString();
 
     // Combine the data with the id and contentHtml
     return {
@@ -102,6 +110,6 @@ export async function getPostData(id, year, month, date) {
         month,
         date,
         contentHtml,
-        ...(matterResult.data as { created_at: string; title: string })
-    }
+        ...(matterResult.data as { created_at: string; title: string }),
+    };
 }
