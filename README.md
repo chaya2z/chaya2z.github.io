@@ -1,1 +1,3 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+# chaya2z.github.io
+
+**This site is published at https://blog.chaya2z.com/**
