@@ -6,7 +6,7 @@ import Link from "next/link";
 import React from "react";
 
 const name = "chaya2z";
-export const siteTitle = "Next.js Sample Website";
+export const siteTitle = "海底タランテラ";
 
 export default function Layout({
     children,
@@ -21,7 +21,7 @@ export default function Layout({
                 <link rel="icon" href="/favicon.ico" />
                 <meta
                     name="description"
-                    content="Learn how to build a personal website using Next.js"
+                    content="IT技術を中心としたブログ"
                 />
                 <meta
                     property="og:image"
