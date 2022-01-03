@@ -25,7 +25,7 @@ export default function Layout({
                 />
                 <meta
                     property="og:image"
-                    content="https://github.com/chaya2z.github.io/blob/gh-pages/main_ogp.png?raw=true"
+                    content="https://github.com/chaya2z/chaya2z.github.io/blob/gh-pages/main_ogp.png?raw=true"
                 />
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
