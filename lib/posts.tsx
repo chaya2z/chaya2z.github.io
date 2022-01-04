@@ -14,7 +14,7 @@ export function getAllPostIds(year = "**", month = "**", date = "**") {
     // [
     //     {
     //         params: {
-    //             id: 'post01.md',
+    //             id: 'post01',
     //             year: '2022',
     //             month: '01',
     //             date: '01'
@@ -22,7 +22,7 @@ export function getAllPostIds(year = "**", month = "**", date = "**") {
     //     },
     //     {
     //         params: {
-    //             id: 'post02.md',
+    //             id: 'post02',
     //             year: '2023',
     //             month: '12',
     //             date: '12'
