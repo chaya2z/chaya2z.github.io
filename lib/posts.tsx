@@ -51,7 +51,7 @@ export function getSortedPostsData(
     const fileNames = getAllPostIds(year, month, date);
     const allPostsData = fileNames.map((fileName) => {
         // Remove ".md" from file name to get id
-        const id = fileName.params.id.replace(/\.md$/, "");
+        const id = fileName.params.id;
         const year = fileName.params.year;
         const month = fileName.params.month;
         const date = fileName.params.date;
@@ -76,7 +76,7 @@ export function getSortedPostsData(
         };
     });
     // Sort posts by date
-    return allPostsData.sort(({ date: a }, { date: b }) => {
+    return allPostsData.sort(({ created_at: a }, { created_at: b }) => {
         if (a < b) {
             return 1;
         } else if (a > b) {
