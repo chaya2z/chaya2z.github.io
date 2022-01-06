@@ -21,6 +21,22 @@ created_at: '2021-12-31'
 console.log("Hello")
 ```
 
+## テーブル
+
+| aaa | bbb |
+| --- | --- |
+| aaa | bbb |
+
+## 注釈
+
+A note[^1]
+
+[^1]: Big note.
+
+## 打ち消し線
+
+~one~ or ~~two~~ tildes.
+
 ## おわりに
 
 おわり

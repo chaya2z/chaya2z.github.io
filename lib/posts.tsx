@@ -5,6 +5,7 @@ import matter from "gray-matter";
 
 // related to HTML or Markdown
 import { remark } from "remark";
+import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
 import rehypeShiki from "rehype-shiki";
@@ -105,6 +106,7 @@ export async function getPostData(id, year, month, date) {
 
     // Use remark to convert markdown into HTML string
     const processedContent = await remark()
+        .use(remarkGfm)
         // Add TOC
         .use(remarkSlug)
         .use(remarkToc, { heading: "目次", maxDepth: 2 })
