@@ -1,9 +1,15 @@
 import fs from "fs";
 import path from "path";
-import matter from "gray-matter";
-import { remark } from "remark";
-import html from "remark-html";
 import glob from "glob";
+import matter from "gray-matter";
+
+// related to HTML or Markdown
+import { remark } from "remark";
+import remarkRehype from "remark-rehype";
+import rehypeStringify from "rehype-stringify";
+import rehypeShiki from "rehype-shiki"
+import remarkSlug from "remark-slug";
+import remarkToc from "remark-toc";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -99,7 +105,15 @@ export async function getPostData(id, year, month, date) {
 
     // Use remark to convert markdown into HTML string
     const processedContent = await remark()
-        .use(html)
+        // Add TOC
+        .use(remarkSlug)
+        .use(remarkToc, { heading: '目次', maxDepth: 2 })
+        // mdast into hast
+        .use(remarkRehype)
+        // hast into HTML
+        .use(rehypeStringify)
+        // Add syntax highlight
+        .use(rehypeShiki)
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
