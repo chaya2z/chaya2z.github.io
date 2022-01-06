@@ -43,7 +43,7 @@ export default function Posts({ allPostsData }) {
                                         <Date dateString={created_at} />
                                     </small>
                                 </li>
-                            )
+                            );
                         }
                     )}
                 </ul>

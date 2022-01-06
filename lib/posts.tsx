@@ -7,7 +7,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import rehypeShiki from "rehype-shiki"
+import rehypeShiki from "rehype-shiki";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 
@@ -107,7 +107,7 @@ export async function getPostData(id, year, month, date) {
     const processedContent = await remark()
         // Add TOC
         .use(remarkSlug)
-        .use(remarkToc, { heading: '目次', maxDepth: 2 })
+        .use(remarkToc, { heading: "目次", maxDepth: 2 })
         // mdast into hast
         .use(remarkRehype)
         // hast into HTML
