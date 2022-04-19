@@ -1,11 +1,11 @@
 import Head from "next/head";
-import Image from "next/image";
 import styles from "./layout.module.css";
-import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import React from "react";
+import Header from "./header/Header";
+import NavBar from "./navbar/NavBar";
+import Footer from "./footer/Footer";
 
-const name = "chaya2z";
 export const siteTitle = "海底タランテラ";
 
 export default function Layout({
@@ -16,8 +16,9 @@ export default function Layout({
     home?: boolean;
 }) {
     return (
-        <div className={styles.container}>
+        <>
             <Head>
+                <title>{siteTitle}</title>
                 <link rel="icon" href="/favicon.ico" />
                 <meta
                     name="description"
@@ -33,40 +34,17 @@ export default function Layout({
             <header className={styles.header}>
                 {home ? (
                     <>
-                        <Image
-                            priority
-                            src="images/profile.jpg"
-                            className={utilStyles.borderCircle}
-                            height={144}
-                            width={144}
-                            alt={name}
-                        />
-                        <h1 className={utilStyles.heading2Xl}>{name}</h1>
+                        <Header />
+                        <NavBar />
                     </>
                 ) : (
                     <>
-                        <Link href="/">
-                            <a>
-                                <Image
-                                    priority
-                                    src="/images/profile.jpg"
-                                    className={utilStyles.borderCircle}
-                                    height={108}
-                                    width={108}
-                                    alt={name}
-                                />
-                            </a>
-                        </Link>
-                        <h2 className={utilStyles.headingLg}>
-                            <Link href="/">
-                                <a className={utilStyles.colorInherit}>
-                                    {name}
-                                </a>
-                            </Link>
-                        </h2>
+                        <Header />
+                        <NavBar />
                     </>
                 )}
             </header>
+        <div className={styles.container}>
             <main>{children}</main>
             {!home && (
                 <div className={styles.backToHome}>
@@ -76,5 +54,7 @@ export default function Layout({
                 </div>
             )}
         </div>
+            <Footer />
+        </>
     );
 }
