@@ -14,8 +14,18 @@
     padding-top: 1rem;
 }
 
+.item a {
+    color: #666666;
+    text-decoration: none;
+}
+
 .item:hover {
     transition: 0.8s;
     color: white;
     background-color: steelblue;
+}
+
+.item:hover a {
+    transition: 1s;
+    color: white;
 }
