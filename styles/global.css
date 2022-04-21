@@ -24,10 +24,13 @@ a:hover {
 img {
     max-width: 100%;
     display: block;
+    margin: 0 auto;
+    box-shadow: 0 0 1rem #999;
 }
 
 table {
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 table th, table td {
@@ -42,4 +45,9 @@ table th {
 
 table td {
     background-color: gainsboro;
+}
+
+pre {
+    border-radius: 10px;
+    padding: 1rem;
 }
