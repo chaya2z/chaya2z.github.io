@@ -25,3 +25,21 @@ img {
     max-width: 100%;
     display: block;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+table th, table td {
+    border: solid 2px white;
+    padding: 0.3rem 1.4rem;
+}
+
+table th {
+    background-color: steelblue;
+    color: white;
+}
+
+table td {
+    background-color: gainsboro;
+}
