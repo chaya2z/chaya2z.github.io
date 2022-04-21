@@ -20,10 +20,7 @@ export default function Layout({
             <Head>
                 <title>{siteTitle}</title>
                 <link rel="icon" href="/favicon.ico" />
-                <meta
-                    name="description"
-                    content="IT技術を中心としたブログ"
-                />
+                <meta name="description" content="IT技術を中心としたブログ" />
                 <meta
                     property="og:image"
                     content="https://github.com/chaya2z/chaya2z.github.io/blob/gh-pages/main_ogp.png?raw=true"
@@ -44,16 +41,16 @@ export default function Layout({
                     </>
                 )}
             </header>
-        <div className={styles.container}>
-            <main>{children}</main>
-            {!home && (
-                <div className={styles.backToHome}>
-                    <Link href="/">
-                        <a>← Back to home</a>
-                    </Link>
-                </div>
-            )}
-        </div>
+            <div className={styles.container}>
+                <main>{children}</main>
+                {!home && (
+                    <div className={styles.backToHome}>
+                        <Link href="/">
+                            <a>← Back to home</a>
+                        </Link>
+                    </div>
+                )}
+            </div>
             <Footer />
         </>
     );

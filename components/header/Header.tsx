@@ -5,5 +5,5 @@ export default function Header() {
         <div className={headerStyles.container}>
             <h1>海底タランテラ</h1>
         </div>
-    )
+    );
 }

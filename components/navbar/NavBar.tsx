@@ -2,37 +2,37 @@ import navbarStyles from "./navbar.module.css";
 import Link from "next/link";
 
 type navbarItem = {
-    path: string,
-    name: string,
-}
+    path: string;
+    name: string;
+};
 
 export default function NavBar() {
     const items: navbarItem[] = [
         {
             path: "/",
-            name: "Home"
+            name: "Home",
         },
         {
             path: "/posts",
-            name: "Posts"
+            name: "Posts",
         },
         {
             path: "/about",
-            name: "About"
+            name: "About",
         },
-    ]
+    ];
 
     return (
         <div className={navbarStyles.container}>
-            {items.map(item => {
+            {items.map((item) => {
                 return (
                     <>
                         <Link href={item.path} key={item.path}>
                             <a className={navbarStyles.item}>{item.name}</a>
                         </Link>
                     </>
-                )
+                );
             })}
         </div>
-    )
+    );
 }
