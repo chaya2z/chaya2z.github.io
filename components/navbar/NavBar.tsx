@@ -26,11 +26,11 @@ export default function NavBar() {
         <div className={navbarStyles.container}>
             {items.map(item => {
                 return (
-                    <div className={navbarStyles.item} key={item.path}>
-                        <Link href={item.path}>
-                            <a>{item.name}</a>
+                    <>
+                        <Link href={item.path} key={item.path}>
+                            <a className={navbarStyles.item}>{item.name}</a>
                         </Link>
-                    </div>
+                    </>
                 )
             })}
         </div>
