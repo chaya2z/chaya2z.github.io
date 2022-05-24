@@ -11,6 +11,7 @@ import rehypeStringify from "rehype-stringify";
 import rehypeShiki from "rehype-shiki";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
+import {postData} from "../types/posts";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -79,7 +80,7 @@ export function getSortedPostsData(
             year,
             month,
             date,
-            ...(matterResult.data as { created_at: string; title: string }),
+            ...(matterResult.data as postData),
         };
     });
     // Sort posts by date
@@ -126,6 +127,6 @@ export async function getPostData(id, year, month, date) {
         month,
         date,
         contentHtml,
-        ...(matterResult.data as { created_at: string; title: string }),
+        ...(matterResult.data as postData),
     };
 }
