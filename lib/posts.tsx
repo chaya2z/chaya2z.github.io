@@ -12,6 +12,8 @@ import rehypeShiki from "rehype-shiki";
 import remarkSlug from "remark-slug";
 import remarkToc from "remark-toc";
 import {postData} from "../types/posts";
+import rehypeKatex from "rehype-katex";
+import remarkMath from "remark-math";
 
 const postsDirectory = path.join(process.cwd(), "posts");
 
@@ -108,6 +110,8 @@ export async function getPostData(id, year, month, date) {
     // Use remark to convert markdown into HTML string
     const processedContent = await remark()
         .use(remarkGfm)
+        // formula
+        .use(remarkMath)
         // Add TOC
         .use(remarkSlug)
         .use(remarkToc, { heading: "目次", maxDepth: 2 })
@@ -117,6 +121,8 @@ export async function getPostData(id, year, month, date) {
         .use(rehypeStringify)
         // Add syntax highlight
         .use(rehypeShiki)
+        // KaTeX
+        .use(rehypeKatex)
         .process(matterResult.content);
     const contentHtml = processedContent.toString();
 
