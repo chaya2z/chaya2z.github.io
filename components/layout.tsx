@@ -5,7 +5,6 @@ import React from "react";
 import Header from "./header/Header";
 import NavBar from "./navbar/NavBar";
 import Footer from "./footer/Footer";
-import Script from "next/script";
 
 export const siteTitle = "海底タランテラ";
 
@@ -28,17 +27,10 @@ export default function Layout({
                 />
                 <meta name="og:title" content={siteTitle} />
                 <meta name="twitter:card" content="summary_large_image" />
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css"
+                      integrity="sha384-Xi8rHCmBmhbuyyhbI88391ZKP2dmfnOl4rT9ZfRI7mLTdk1wblIUnrIq35nqwEvC"
+                      crossOrigin="anonymous"/>
             </Head>
-            {/*　Global site tag (gtag.js) - Google Analytics　*/}
-            <Script id="google-analytics" strategy="afterInteractive">
-                {`
-                      window.dataLayer = window.dataLayer || [];
-                      function gtag(){window.dataLayer.push(arguments);}
-                      gtag('js', new Date());
-            
-                      gtag('config', 'G-RRDCMQHPNJ');
-                    `}
-            </Script>
             <header className={styles.header}>
                 {home ? (
                     <>
