@@ -36,7 +36,7 @@ export default function Posts({ allPostsData }) {
                                     <Link
                                         href={`/posts/${year}/${month}/${date}/${id}`}
                                     >
-                                        <a>{title}</a>
+                                        {title}
                                     </Link>
                                     <br />
                                     <small className={utilStyles.lightText}>

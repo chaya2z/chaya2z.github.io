@@ -27,8 +27,8 @@ export default function NavBar() {
             {items.map((item) => {
                 return (
                     <>
-                        <Link href={item.path} key={item.path}>
-                            <a className={navbarStyles.item}>{item.name}</a>
+                        <Link href={item.path} key={item.path} className={navbarStyles.item}>
+                            {item.name}
                         </Link>
                     </>
                 );

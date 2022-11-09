@@ -31,7 +31,7 @@ export default function eachYearPostsList({ allYearPostsData }) {
                                 <Link
                                     href={`/posts/${year}/${month}/${date}/${id}`}
                                 >
-                                    <a>{title}</a>
+                                    {title}
                                 </Link>
                                 <br />
                                 <small className={utilStyles.lightText}>
