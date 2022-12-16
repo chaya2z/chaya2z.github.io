@@ -3,19 +3,21 @@ import Layout, { siteTitle } from "../components/layout";
 import utilStyles from "../styles/utils.module.css";
 import Link from "next/link";
 import Date from "../components/date";
-import { getSortedPostsData } from "../lib/prevPosts";
 import { GetStaticProps } from "next";
+import { loadPosts } from "../lib/posts";
+import { Post } from "../lib/types/post";
 
 export const getStaticProps: GetStaticProps = async () => {
-    const allPostsData = getSortedPostsData();
+    const allPosts = await loadPosts();
+
     return {
         props: {
-            allPostsData,
+            allPosts,
         },
     };
 };
 
-export default function Posts({ allPostsData }) {
+export default function Posts({ allPosts }: { allPosts: Post[] }) {
     return (
         <Layout home>
             <Head>
@@ -26,26 +28,24 @@ export default function Posts({ allPostsData }) {
             >
                 <h2 className={utilStyles.headingLg}>すべての記事一覧</h2>
                 <ul className={utilStyles.list}>
-                    {allPostsData.map(
-                        ({ id, year, month, date, created_at, title }) => {
-                            return (
-                                <li
-                                    className={utilStyles.listItem}
-                                    key={created_at}
+                    {allPosts.map(({ created_at, title, postId, postDate }) => {
+                        return (
+                            <li
+                                className={utilStyles.listItem}
+                                key={created_at}
+                            >
+                                <Link
+                                    href={`/posts/${postDate.year}/${postDate.month}/${postDate.date}/${postId}`}
                                 >
-                                    <Link
-                                        href={`/posts/${year}/${month}/${date}/${id}`}
-                                    >
-                                        {title}
-                                    </Link>
-                                    <br />
-                                    <small className={utilStyles.lightText}>
-                                        <Date dateString={created_at} />
-                                    </small>
-                                </li>
-                            );
-                        }
-                    )}
+                                    {title}
+                                </Link>
+                                <br />
+                                <small className={utilStyles.lightText}>
+                                    <Date dateString={created_at} />
+                                </small>
+                            </li>
+                        );
+                    })}
                 </ul>
             </section>
         </Layout>
