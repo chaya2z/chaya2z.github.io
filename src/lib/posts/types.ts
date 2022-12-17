@@ -9,7 +9,7 @@ export type PostDate = {
     date: string;
 };
 
-export type Post = PostMetadata & {
+export type PostData = PostMetadata & {
     postId: string;
     postDate: PostDate;
     contentHtml: string;

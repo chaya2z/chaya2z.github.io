@@ -3,27 +3,24 @@ import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import markdown2Html from "zenn-markdown-html";
-import { postMetadata } from "../types/posts";
-import { Post } from "./types/post";
+import { PostData, PostMetadata } from "./types";
 
 type LoadPostsFilter = {
-    id?: string;
+    postId?: string;
     year?: string;
     month?: string;
     date?: string;
 };
 
-const defaults: LoadPostsFilter = {
-    id: "**",
-    year: "**",
-    month: "**",
-    date: "**",
-};
-
 export const loadPosts = async (
-    filter = {} as LoadPostsFilter
-): Promise<Post[]> => {
-    const { id, year, month, date } = { ...defaults, ...filter };
+    filter?: LoadPostsFilter
+): Promise<PostData[]> => {
+    const { id, year, month, date } = {
+        id: filter?.postId ?? "**",
+        year: filter?.year ?? "**",
+        month: filter?.month ?? "**",
+        date: filter?.date ?? "**",
+    };
 
     const filePaths: string[] = glob.sync(
         `posts/${year}/${month}/${date}/${id}`,
@@ -48,7 +45,7 @@ export const loadPosts = async (
             postId,
             postDate: { year, month, date },
             contentHtml,
-            ...(metadata as postMetadata),
+            ...(metadata as PostMetadata),
         };
     });
 };

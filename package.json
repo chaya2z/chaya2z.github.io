@@ -6,15 +6,17 @@
     "start": "next start",
     "export": "next export",
     "lint": "next lint",
-    "format": "prettier --write components lib pages"
+    "format": "prettier --write src/components src/lib src/app"
   },
   "dependencies": {
+    "@primer/react": "^35.16.0",
     "date-fns": "^2.28.0",
     "glob": "^7.2.0",
     "gray-matter": "^4.0.3",
     "next": "^13.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "styled-components": "^5.3.6",
     "zenn-content-css": "^0.1.132",
     "zenn-markdown-html": "^0.1.132"
   },
