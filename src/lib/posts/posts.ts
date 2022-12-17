@@ -3,27 +3,20 @@ import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
 import markdown2Html from "zenn-markdown-html";
-import { PostData, PostMetadata } from "./types";
-
-type LoadPostsFilter = {
-    postId?: string;
-    year?: string;
-    month?: string;
-    date?: string;
-};
+import { LoadPostsFilter, PostData, PostMetadata } from "./types";
 
 export const loadPosts = async (
     filter?: LoadPostsFilter
 ): Promise<PostData[]> => {
-    const { id, year, month, date } = {
-        id: filter?.postId ?? "**",
+    const { postId, year, month, date } = {
+        postId: filter?.postId ?? "**",
         year: filter?.year ?? "**",
         month: filter?.month ?? "**",
         date: filter?.date ?? "**",
     };
 
     const filePaths: string[] = glob.sync(
-        `posts/${year}/${month}/${date}/${id}`,
+        `posts/${year}/${month}/${date}/${postId}.md`,
         {
             nosort: false, // sort list
             nodir: true, // only files ( not dir )
@@ -50,18 +43,20 @@ export const loadPosts = async (
     });
 };
 
-export function loadPostIds(year = "**", month = "**", date = "**") {
+export const loadPostIds = async (
+    year = "**",
+    month = "**",
+    date = "**"
+): Promise<LoadPostsFilter[]> => {
     const files = glob.sync(`posts/${year}/${month}/${date}/*.md`);
 
     return files.map((filePath) => {
-        const [, year, month, date, id] = filePath.split("/");
+        const [, year, month, date, postId] = filePath.split("/");
         return {
-            params: {
-                id,
-                year,
-                month,
-                date,
-            },
+            postId,
+            year,
+            month,
+            date,
         };
     });
-}
+};

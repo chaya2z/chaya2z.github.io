@@ -1,10 +1,10 @@
-import { PostDate } from "../../lib/posts/types";
+import { LoadPostsFilter } from "../../lib/posts/types";
 import Link from "next/link";
 import Date from "../date";
 import { loadPosts } from "../../lib/posts/posts";
 import React from "react";
 
-export const PostsList = (async ({ filter }: { filter?: PostDate }) => {
+export const PostsList = (async ({ filter }: { filter?: LoadPostsFilter }) => {
     const posts = await loadPosts(filter);
 
     if (posts.length === 0) {
@@ -36,4 +36,4 @@ export const PostsList = (async ({ filter }: { filter?: PostDate }) => {
             </section>
         </>
     );
-}) as unknown as React.FC<{ filter?: PostDate }>;
+}) as unknown as React.FC<{ filter?: LoadPostsFilter }>;

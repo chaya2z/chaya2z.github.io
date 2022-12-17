@@ -1,5 +1,5 @@
 import "zenn-content-css";
-import { loadPosts } from "../../../../../../lib/posts/posts";
+import { loadPostIds, loadPosts } from "../../../../../../lib/posts/posts";
 
 const Post = async ({ params }) => {
     const [post] = await loadPosts(params);
@@ -16,3 +16,11 @@ const Post = async ({ params }) => {
 };
 
 export default Post;
+
+export const generateStaticParams = async () => {
+    const posts = await loadPostIds();
+
+    return posts.map((post) => {
+        return { ...post, postId: post.postId.replace(/\.md$/, "") };
+    });
+};

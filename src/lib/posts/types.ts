@@ -14,3 +14,7 @@ export type PostData = PostMetadata & {
     postDate: PostDate;
     contentHtml: string;
 };
+
+export type LoadPostsFilter = PostDate & {
+    postId: string;
+};
