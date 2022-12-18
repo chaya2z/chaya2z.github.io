@@ -1,6 +1,6 @@
 import { Suspense } from "react";
 import { PostsList } from "../../../components/postsList/postsList";
-import { loadPostIds } from "../../../lib/posts/posts";
+import { makePostParams } from "../../../lib/posts/posts";
 
 const YearPostsList = async ({ params }) => {
     return (
@@ -13,9 +13,9 @@ const YearPostsList = async ({ params }) => {
 export default YearPostsList;
 
 export const generateStaticParams = async () => {
-    const posts = await loadPostIds();
+    const posts = await makePostParams();
 
     return posts.map((post) => {
-        return { ...post, postId: post.postId.replace(/\.md$/, "") };
+        return { ...post };
     });
 };

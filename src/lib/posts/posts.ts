@@ -35,7 +35,7 @@ export const loadPosts = async (
         const [, year, month, date, postId] = fileName.split("/");
 
         return {
-            postId,
+            postId: postId.replace(/\.md$/, ""),
             postDate: { year, month, date },
             contentHtml,
             ...(metadata as PostMetadata),
@@ -43,7 +43,7 @@ export const loadPosts = async (
     });
 };
 
-export const loadPostIds = async (
+export const makePostParams = async (
     year = "**",
     month = "**",
     date = "**"
@@ -53,7 +53,7 @@ export const loadPostIds = async (
     return files.map((filePath) => {
         const [, year, month, date, postId] = filePath.split("/");
         return {
-            postId,
+            postId: postId.replace(/\.md$/, ""),
             year,
             month,
             date,

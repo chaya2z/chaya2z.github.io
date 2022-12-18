@@ -7,14 +7,6 @@ import React from "react";
 export const PostsList = (async ({ filter }: { filter?: LoadPostsFilter }) => {
     const posts = await loadPosts(filter);
 
-    if (posts.length === 0) {
-        return (
-            <>
-                <h2>見つかりませんでした</h2>
-            </>
-        );
-    }
-
     return (
         <>
             <section>
