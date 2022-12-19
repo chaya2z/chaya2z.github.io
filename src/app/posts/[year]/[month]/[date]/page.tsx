@@ -1,21 +1,22 @@
-import { PostsList } from "../../../../../components/postsList/postsList";
-import { Suspense } from "react";
-import { makePostParams } from "../../../../../lib/posts/posts";
+import { Suspense } from 'react';
 
-const DatePostsList = ({ params }) => {
-    return (
-        <Suspense fallback={<>aaa</>}>
-            <PostsList filter={params} />
-        </Suspense>
-    );
+import { PostsList } from '@/components/postsList/postsList';
+import { makePostParams } from '@/lib/posts/posts';
+
+const DatePostsList = async ({ params }) => {
+  return (
+    <Suspense fallback={<>aaa</>}>
+      <PostsList filter={params} />
+    </Suspense>
+  );
 };
 
 export default DatePostsList;
 
 export const generateStaticParams = async () => {
-    const posts = await makePostParams();
+  const posts = await makePostParams();
 
-    return posts.map((post) => {
-        return { ...post };
-    });
+  return posts.map((post) => {
+    return { ...post };
+  });
 };

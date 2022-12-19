@@ -1,20 +1,20 @@
 export type PostMetadata = {
-    created_at: string;
-    title: string;
+  created_at: string;
+  title: string;
 };
 
 export type PostDate = {
-    year: string;
-    month: string;
-    date: string;
+  year: string;
+  month: string;
+  date: string;
 };
 
 export type PostData = PostMetadata & {
-    postId: string;
-    postDate: PostDate;
-    contentHtml: string;
+  postId: string;
+  postDate: PostDate;
+  contentHtml: string;
 };
 
 export type LoadPostsFilter = PostDate & {
-    postId: string;
+  postId: string;
 };

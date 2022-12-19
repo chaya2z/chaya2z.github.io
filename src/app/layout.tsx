@@ -1,12 +1,17 @@
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode;
-}) {
-    return (
-        <html>
-            <head />
-            <body>{children}</body>
-        </html>
-    );
+import { ReactNode } from 'react';
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  /*
+   * must contain the html and body tags.
+   * */
+  return (
+    <html>
+      <body>
+        {children}
+        <p>hhhhhh</p>
+      </body>
+    </html>
+  );
 }
+
+// ヘッダーとフッターだけ

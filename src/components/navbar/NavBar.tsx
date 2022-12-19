@@ -1,42 +1,39 @@
-import navbarStyles from "./navbar.module.css";
-import Link from "next/link";
+import Link from 'next/link';
+
+import navbarStyles from './navbar.module.css';
 
 type navbarItem = {
-    path: string;
-    name: string;
+  path: string;
+  name: string;
 };
 
 export default function NavBar() {
-    const items: navbarItem[] = [
-        {
-            path: "/",
-            name: "Home",
-        },
-        {
-            path: "/posts",
-            name: "Posts",
-        },
-        {
-            path: "/about",
-            name: "About",
-        },
-    ];
+  const items: navbarItem[] = [
+    {
+      path: '/',
+      name: 'Home',
+    },
+    {
+      path: '/posts',
+      name: 'Posts',
+    },
+    {
+      path: '/about',
+      name: 'About',
+    },
+  ];
 
-    return (
-        <div className={navbarStyles.container}>
-            {items.map((item) => {
-                return (
-                    <>
-                        <Link
-                            href={item.path}
-                            key={item.path}
-                            className={navbarStyles.item}
-                        >
-                            {item.name}
-                        </Link>
-                    </>
-                );
-            })}
-        </div>
-    );
+  return (
+    <div className={navbarStyles.container}>
+      {items.map((item) => {
+        return (
+          <>
+            <Link href={item.path} key={item.path} className={navbarStyles.item}>
+              {item.name}
+            </Link>
+          </>
+        );
+      })}
+    </div>
+  );
 }
