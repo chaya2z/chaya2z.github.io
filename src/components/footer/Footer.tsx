@@ -1,10 +1,10 @@
-import footerStyles from './footer.module.css';
+import { Box } from '@primer/react';
 
 export default function Footer() {
   return (
-    <div className={footerStyles.container}>
+    <Box sx={{ marginY: 'auto' }}>
       <small>&copy; 海底タランテラ chaya2z</small>
-      <div className={footerStyles.text}>Powered by GitHub Pages</div>
-    </div>
+      <Box>Powered by GitHub Pages</Box>
+    </Box>
   );
 }

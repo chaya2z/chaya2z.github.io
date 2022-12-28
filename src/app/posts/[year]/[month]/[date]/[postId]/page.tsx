@@ -1,14 +1,13 @@
-import 'zenn-content-css';
+import { Article } from '@/components/article/Article';
 import { makePostParams, loadPosts } from '@/lib/posts/posts';
 
 const Post = async ({ params }) => {
   const [post] = await loadPosts(params);
 
   return (
-    <article>
-      <h1>{post.title}</h1>
-      <div className="znc" dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
-    </article>
+    <>
+      <Article post={post} />
+    </>
   );
 };
 
