@@ -1,10 +1,10 @@
-import { Box } from '@primer/react';
+import { Box, Text } from '@primer/react';
 
 export default function Footer() {
   return (
-    <Box sx={{ marginY: 'auto' }}>
+    <Box display={'flex'} justifyContent={'center'} flexDirection={'column'} textAlign={'center'} marginY={4}>
       <small>&copy; 海底タランテラ chaya2z</small>
-      <Box>Powered by GitHub Pages</Box>
+      <Text as={'span'}>Powered by GitHub Pages</Text>
     </Box>
   );
 }
