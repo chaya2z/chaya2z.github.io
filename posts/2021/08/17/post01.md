@@ -5,8 +5,6 @@ created_at: '2021-08-17'
 
 ところどころつまずいたので残します．
 
-## 目次
-
 ## LAN net という項目
 
 例えば，LAN という名前のインターフェイスがあったとき，ファイアウォールのルールの Source や Destination の選択肢で「LAN address」や「LAN net」という項目が選べます．

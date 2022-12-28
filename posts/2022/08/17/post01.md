@@ -5,8 +5,6 @@ created_at: '2022-08-18'
 
 i3-gaps を中心とした Linux の環境構築についてと、それらのファイルの管理について書きました。
 
-## 目次
-
 ## タイル型ウィンドウマネージャへ移行するモチベーション
 
 今のラップトップを使い始めて４年目であることに加えて、１週間に何度も Linux をビルドしていたらバッテリーの寿命が縮んでしまったみたいで、メモリや CPU の使用率が気になり始めました。
@@ -47,8 +45,6 @@ dotfiles は git を使って管理しています。リポジトリを `~/.loca
 しかし、手動でそれをやるのは面倒なのでスクリプトを書きました。
 
 ### リポジトリ
-
-[![chaya2z/dotfiles - GitHub](https://gh-card.dev/repos/chaya2z/dotfiles.svg?fullname=)](https://github.com/chaya2z/dotfiles)
 
 https://github.com/chaya2z/dotfiles
 

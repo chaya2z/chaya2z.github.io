@@ -9,8 +9,6 @@ created_at: '2020-12-03'
 
 次の記事は[@bluekey0725](https://twitter.com/bluekey0725) の [TUN モジュールによる Docker のロードエラーと linux カーネル](https://qiita.com/blue_key/items/82facd82e9383c711534) です．
 
-## 目次
-
 ## はじめに
 
 この記事は 2020/10/28 - 29 に開催された、eBPF summit の Day 1 の「A Beginner’s Guide to eBPF Programming」の内容を受けて書いています．

@@ -9,8 +9,6 @@ created_at: '2021-12-04'
 
 次は [@waka](https://twitter.com/gamoutatsumi) の [最近のVim事情](https://zenn.dev/gamoutatsumi/articles/26745357cffa44) です．
 
-## 目次
-
 ## 1. ConoHa の VPS を契約しサーバを建てる
 
 OS は何でもいい[^1] のでサーバを契約します．
