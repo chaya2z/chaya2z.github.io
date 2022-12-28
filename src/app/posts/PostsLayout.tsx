@@ -1,6 +1,6 @@
 'use client';
 
-import { PageLayout } from '@primer/react';
+import { Box, PageLayout } from '@primer/react';
 import React, { ReactNode } from 'react';
 
 import SidePane from '@/components/sidePane';
@@ -9,7 +9,11 @@ import SidePane from '@/components/sidePane';
 const PostsLayout = ({ children }: { children: ReactNode }) => {
   return (
     <PageLayout>
-      <PageLayout.Content>{children}</PageLayout.Content>
+      <PageLayout.Content>
+        <Box backgroundColor={'white'} padding={4} borderRadius={8}>
+          {children}
+        </Box>
+      </PageLayout.Content>
       <PageLayout.Pane sticky>
         <SidePane />
       </PageLayout.Pane>

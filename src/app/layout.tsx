@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider } from '@primer/react';
+import { Box, ThemeProvider } from '@primer/react';
 import { usePathname } from 'next/navigation';
 import Script from 'next/script';
 import { ReactNode } from 'react';
@@ -26,7 +26,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <Header />
           <BreadCrumbs pathname={pathArray} />
-          <main>{children}</main>
+          <Box backgroundColor={'#f0f8ff'}>
+            <main>{children}</main>
+          </Box>
           <Footer />
         </ThemeProvider>
       </body>
