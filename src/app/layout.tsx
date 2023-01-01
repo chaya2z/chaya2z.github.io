@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         <ThemeProvider>
           <Header />
           <BreadCrumbs pathname={pathArray} />
-          <Box backgroundColor={'#f0f8ff'}>
+          <Box backgroundColor={'#f5f5f5'}>
             <main>{children}</main>
           </Box>
           <Footer />
