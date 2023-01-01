@@ -1,29 +1,19 @@
-import Link from 'next/link';
+'use client';
+
+import { Box } from '@primer/react';
 import React from 'react';
 
-import { loadPosts } from '@/lib/posts/posts';
-import { LoadPostsFilter } from '@/lib/posts/types';
+import PostsListItem from '@/components/postsListItem/postsListItem';
+import { PostData } from '@/lib/posts/types';
 
-import Date from '../date';
-
-export const PostsList = (async ({ filter }: { filter?: LoadPostsFilter }) => {
-  const posts = await loadPosts(filter);
-
+export const PostsList = ({ posts }: { posts: PostData[] }) => {
   return (
     <>
-      <section>
-        <h2>{posts.length} 件見つかりました</h2>
-        <ul>
-          {posts.map(({ created_at, title, postId, postDate }) => (
-            <li key={created_at}>
-              <Link href={`/posts/${postDate.year}/${postDate.month}/${postDate.date}/${postId}`}>{title}</Link>
-              <small>
-                <Date dateString={created_at} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Box as={'ul'}>
+        {posts.map((post, i) => (
+          <PostsListItem post={post} key={i.toString()} />
+        ))}
+      </Box>
     </>
   );
-}) as unknown as React.FC<{ filter?: LoadPostsFilter }>;
+};

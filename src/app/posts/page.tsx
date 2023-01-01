@@ -1,14 +1,6 @@
-import { Suspense } from 'react';
+import PostsPage from '@/components/postsPage/postsPage';
 
-import { PostsList } from '@/components/postsList/postsList';
-
-const AllPostsList = async () => {
-  return (
-    <Suspense fallback={<>aaa</>}>
-      <h1>記事一覧</h1>
-      <PostsList />
-    </Suspense>
-  );
-};
+// const AllPostsList = PostsPage;
+const AllPostsList = async () => PostsPage(undefined);
 
 export default AllPostsList;

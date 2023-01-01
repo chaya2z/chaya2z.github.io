@@ -8,13 +8,13 @@ import SidePane from '@/components/sidePane';
 // { posts, children }: { posts: PostData[]; children: ReactNode }
 const PostsLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <PageLayout>
-      <PageLayout.Content>
+    <PageLayout containerWidth={'large'}>
+      <PageLayout.Content width={'medium'}>
         <Box backgroundColor={'white'} padding={4} borderRadius={8}>
           {children}
         </Box>
       </PageLayout.Content>
-      <PageLayout.Pane sticky>
+      <PageLayout.Pane sticky width={'small'}>
         <SidePane />
       </PageLayout.Pane>
     </PageLayout>

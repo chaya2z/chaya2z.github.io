@@ -1,15 +1,7 @@
-import { Suspense } from 'react';
-
-import { PostsList } from '@/components/postsList/postsList';
+import PostsPage from '@/components/postsPage/postsPage';
 import { makePostParams } from '@/lib/posts/posts';
 
-const DatePostsList = async ({ params }) => {
-  return (
-    <Suspense fallback={<>aaa</>}>
-      <PostsList filter={params} />
-    </Suspense>
-  );
-};
+const DatePostsList = async ({ params }) => PostsPage(params);
 
 export default DatePostsList;
 
