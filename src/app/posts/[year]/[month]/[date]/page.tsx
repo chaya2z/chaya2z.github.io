@@ -9,6 +9,10 @@ export const generateStaticParams = async () => {
   const posts = await makePostParams();
 
   return posts.map((post) => {
-    return { ...post };
+    return {
+      year: post.year,
+      month: post.month,
+      date: post.date,
+    };
   });
 };
