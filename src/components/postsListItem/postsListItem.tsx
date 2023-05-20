@@ -5,11 +5,11 @@ import Link from 'next/link';
 import React from 'react';
 
 import Date from '@/components/date/date';
-import { PostData } from '@/lib/posts/types';
+import { Post } from '@/types/posts';
 
-const PostsListItem = ({ post }: { post: PostData }) => {
-  const { created_at, postDate, postId, title } = post;
-  const path = postDate.year + '/' + postDate.month + '/' + postDate.date + '/' + postId;
+const PostsListItem = ({ post }: { post: Post }) => {
+  const { created_at, param, title } = post;
+  const path = param.year + '/' + param.month + '/' + param.date + '/' + param.postId;
 
   return (
     <>

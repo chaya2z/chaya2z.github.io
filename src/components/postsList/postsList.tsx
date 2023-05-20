@@ -4,9 +4,9 @@ import { Box } from '@primer/react';
 import React from 'react';
 
 import PostsListItem from '@/components/postsListItem/postsListItem';
-import { PostData } from '@/lib/posts/types';
+import { Post } from '@/types/posts';
 
-export const PostsList = ({ posts }: { posts: PostData[] }) => {
+export const PostsList = ({ posts }: { posts: Post[] }) => {
   return (
     <>
       <Box as={'ul'}>

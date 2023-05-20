@@ -5,9 +5,9 @@ import glob from 'glob';
 import matter from 'gray-matter';
 import markdown2Html from 'zenn-markdown-html';
 
-import { LoadPostsFilter, PostData, PostMetadata } from './types';
+import { LoadPosts, MakePostParams, PostMetadata, PostParam } from '@/types/posts';
 
-export const loadPosts = async (filter?: LoadPostsFilter): Promise<PostData[]> => {
+export const loadPosts: LoadPosts = async (filter) => {
   const { postId, year, month, date } = {
     postId: filter?.postId ?? '**',
     year: filter?.year ?? '**',
@@ -32,18 +32,28 @@ export const loadPosts = async (filter?: LoadPostsFilter): Promise<PostData[]> =
     const [, year, month, date, postId] = fileName.split('/');
 
     return {
-      postId: postId.replace(/\.md$/, ''),
-      postDate: { year, month, date },
+      param: {
+        postId: postId.replace(/\.md$/, ''),
+        year,
+        month,
+        date,
+      },
       contentHtml,
       ...(metadata as PostMetadata),
     };
   });
 };
 
-export const makePostParams = async (year = '**', month = '**', date = '**'): Promise<LoadPostsFilter[]> => {
-  const files = glob.sync(`posts/${year}/${month}/${date}/*.md`);
+export const makePostParams: MakePostParams = async (filter) => {
+  const { year, month, date } = {
+    year: filter?.year ?? '**',
+    month: filter?.month ?? '**',
+    date: filter?.date ?? '**',
+  };
 
-  return files.map((filePath) => {
+  const files: string[] = glob.sync(`posts/${year}/${month}/${date}/*.md`);
+
+  return files.map((filePath): PostParam => {
     const [, year, month, date, postId] = filePath.split('/');
     return {
       postId: postId.replace(/\.md$/, ''),

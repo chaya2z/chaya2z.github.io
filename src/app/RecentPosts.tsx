@@ -5,19 +5,19 @@ import Link from 'next/link';
 import React from 'react';
 
 import Date from '@/components/date/date';
-import { PostData } from '@/lib/posts/types';
+import { Post } from '@/types/posts';
 
-const About = ({ posts }: { posts: PostData[] }) => {
+const About = ({ posts }: { posts: Post[] }) => {
   return (
     <section>
       <Heading>最新の記事</Heading>
       <Box as={'ul'}>
-        {posts.slice(0, 5).map(({ created_at, title, postId, postDate }, i) => (
+        {posts.slice(0, 5).map(({ created_at, title, param }, i) => (
           <Box as={'li'} key={i.toString()}>
             <small>
               <Date dateString={created_at} />
             </small>
-            <Link href={`/posts/${postDate.year}/${postDate.month}/${postDate.date}/${postId}`}>{title}</Link>
+            <Link href={`/posts/${param.year}/${param.month}/${param.date}/${param.postId}`}>{title}</Link>
           </Box>
         ))}
       </Box>

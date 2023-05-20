@@ -2,11 +2,11 @@
 
 import { Pagehead, Text } from '@primer/react';
 
-import { PostData } from '@/lib/posts/types';
+import { Post } from '@/types/posts';
 
 import 'zenn-content-css/lib/index.css';
 
-export const Article = ({ post }: { post: PostData }) => {
+export const Article = ({ post }: { post: Post }) => {
   return (
     <article>
       <Pagehead>
