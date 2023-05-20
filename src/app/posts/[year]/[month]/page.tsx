@@ -1,12 +1,13 @@
 import PostsPage from '@/components/postsPage/postsPage';
-import { makePostParams } from '@/lib/posts/posts';
+import { loadPostsPaths, makePostParams } from '@/lib/posts/posts';
 
 const MonthPostsList = async ({ params }) => PostsPage(params);
 
 export default MonthPostsList;
 
 export const generateStaticParams = async () => {
-  const posts = await makePostParams();
+  const paths = await loadPostsPaths();
+  const posts = makePostParams(paths);
 
   return posts.map((post) => {
     return {

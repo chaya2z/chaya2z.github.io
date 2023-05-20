@@ -23,6 +23,10 @@ export type Post = PostMetadata & {
   contentHtml: string;
 };
 
-export type LoadPosts = (filter: PostsFilter) => Promise<Post[]>;
+export type PostPath = string;
 
-export type MakePostParams = (filter: PostsFilter) => Promise<PostParam[]>;
+export type LoadPostsPaths = (filter?: PostsFilter) => Promise<PostPath[]>;
+
+export type LoadPosts = (paths: PostPath[]) => Post[];
+
+export type MakePostParams = (paths: PostPath[]) => PostParam[];

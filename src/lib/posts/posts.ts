@@ -5,9 +5,9 @@ import glob from 'glob';
 import matter from 'gray-matter';
 import markdown2Html from 'zenn-markdown-html';
 
-import { LoadPosts, MakePostParams, PostMetadata, PostParam } from '@/types/posts';
+import { LoadPosts, LoadPostsPaths, MakePostParams, PostMetadata, PostParam, PostPath } from '@/types/posts';
 
-export const loadPosts: LoadPosts = async (filter) => {
+export const loadPostsPaths: LoadPostsPaths = async (filter) => {
   const { postId, year, month, date } = {
     postId: filter?.postId ?? '**',
     year: filter?.year ?? '**',
@@ -15,12 +15,16 @@ export const loadPosts: LoadPosts = async (filter) => {
     date: filter?.date ?? '**',
   };
 
-  const filePaths: string[] = glob.sync(`posts/${year}/${month}/${date}/${postId}.md`, {
+  const paths: PostPath[] = glob.sync(`posts/${year}/${month}/${date}/${postId}.md`, {
     nosort: false, // sort list
     nodir: true, // only files ( not dir )
   });
 
-  return filePaths.reverse().map((fileName) => {
+  return paths;
+};
+
+export const loadPosts: LoadPosts = (paths: PostPath[]) => {
+  return paths.reverse().map((fileName) => {
     // Read markdown-file as string
     const fullPath = path.join(process.cwd(), fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
@@ -44,16 +48,8 @@ export const loadPosts: LoadPosts = async (filter) => {
   });
 };
 
-export const makePostParams: MakePostParams = async (filter) => {
-  const { year, month, date } = {
-    year: filter?.year ?? '**',
-    month: filter?.month ?? '**',
-    date: filter?.date ?? '**',
-  };
-
-  const files: string[] = glob.sync(`posts/${year}/${month}/${date}/*.md`);
-
-  return files.map((filePath): PostParam => {
+export const makePostParams: MakePostParams = (paths: PostPath[]) => {
+  return paths.map((filePath): PostParam => {
     const [, year, month, date, postId] = filePath.split('/');
     return {
       postId: postId.replace(/\.md$/, ''),
