@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-import glob from 'glob';
+import { glob } from 'glob';
 import matter from 'gray-matter';
 import markdown2Html from 'zenn-markdown-html';
 
@@ -15,9 +15,9 @@ export const loadPostsPaths: LoadPostsPaths = async (filter) => {
     date: filter?.date ?? '**',
   };
 
-  const paths: PostPath[] = glob.sync(`posts/${year}/${month}/${date}/${postId}.md`, {
-    nosort: false, // sort list
-    nodir: true, // only files ( not dir )
+  const paths: PostPath[] = await glob(`posts/${year}/${month}/${date}/${postId}.md`, {
+    // only want the files, not the dirs
+    nodir: true,
   });
 
   return paths;
