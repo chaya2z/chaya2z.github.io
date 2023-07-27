@@ -22,7 +22,7 @@
     "next-mdx-remote": "^4.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.10",
+    "styled-components": "^6.0.0",
     "zenn-content-css": "^0.1.143",
     "zenn-markdown-html": "^0.1.143"
   },
