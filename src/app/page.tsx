@@ -5,7 +5,7 @@ import { loadPosts, loadPostsPaths } from '@/lib/posts/posts';
 
 const Home = async () => {
   const paths = await loadPostsPaths();
-  const posts = loadPosts(paths);
+  const posts = loadPosts(paths).reverse();
 
   return (
     <HomeLayout>

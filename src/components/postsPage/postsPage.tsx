@@ -5,7 +5,7 @@ import { PostParam } from '@/types/posts';
 
 const PostsPage = async (filter?: PostParam) => {
   const paths = await loadPostsPaths(filter);
-  const posts = loadPosts(paths);
+  const posts = loadPosts(paths).reverse();
   const head = '記事一覧';
   const description = `${posts.length} 件見つかりました`;
 
