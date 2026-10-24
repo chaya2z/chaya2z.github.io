@@ -14,7 +14,6 @@
     "fmt:fix": "biome format --write . && prettier --write ."
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.1.8",
     "@astrojs/react": "^7.0.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/react": "^19.3.0",
