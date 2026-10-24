@@ -1,10 +1,17 @@
 ---
+import { getImage } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import ProfileSection from "../components/ProfileSection";
 import HeroSection from "../components/HeroSection";
 import { ImageLightbox } from "../components/ImageLightbox";
 import heroImage from "../assets/images/hero.png";
 import expandIcon from "../assets/images/icons/expand.svg";
+
+const optimizedHero = await getImage({
+  src: heroImage,
+  format: "webp",
+  quality: "max",
+});
 
 const links = [
   {
@@ -31,10 +38,10 @@ const links = [
   >
     <ProfileSection links={links} />
 
-    <HeroSection backgroundSrc={heroImage.src}>
+    <HeroSection backgroundSrc={optimizedHero.src}>
       <ImageLightbox
         client:load
-        imageSrc={heroImage.src}
+        imageSrc={optimizedHero.src}
         alt="Hero Image"
         caption="This photo of Tokyo Station was taken by me and processed using generative AI."
         className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors cursor-pointer"
