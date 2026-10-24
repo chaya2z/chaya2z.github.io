@@ -13,17 +13,17 @@ pnpm fmt:fix
 
 ## Tooling Strategy
 
-We use a combination of **Biome**, **ESLint**, and **Prettier** based on their respective strengths and file support.
+We use a combination of **Biome** and **Prettier** based on their respective strengths and file support.
 
-- **Biome:** Used as the primary tool for JavaScript, TypeScript, and JSON due to its exceptional speed.
-- **ESLint & Prettier:** Used for `.astro` files (as Biome's support is currently experimental) and other formats like YAML.
+- **Biome:** Used as the primary tool for JavaScript, TypeScript, JSON, and `.astro` files due to its exceptional speed. Astro support is enabled via `html.experimentalFullSupportEnabled`.
+- **Prettier:** Used for formats Biome does not support yet, such as YAML and Markdown.
 
 | File type              | Formatter | Linter |
 | ---------------------- | --------- | ------ |
 | `.js` / `.ts` / `.tsx` | Biome     | Biome  |
-| `.astro`               | Prettier  | ESLint |
+| `.astro`               | Biome     | Biome  |
 | `.json`                | Biome     | Biome  |
-| `.yaml`                | Prettier  | -      |
+| `.yaml` / `.md`        | Prettier  | -      |
 
 ## Why Biome?
 
