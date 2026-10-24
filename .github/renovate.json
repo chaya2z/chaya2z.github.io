@@ -19,7 +19,7 @@
       "matchDepTypes": ["dependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm dependencies (non-major)",
-      "groupSlug": "npm-deps-minor-patch"
+      "groupSlug": "npm-deps-non-major"
     },
     {
       "description": "group minor and patch updates of npm devDependencies.",
@@ -27,14 +27,14 @@
       "matchDepTypes": ["devDependencies"],
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "npm devDependencies (non-major)",
-      "groupSlug": "npm-dev-deps-minor-patch"
+      "groupSlug": "npm-dev-deps-non-major"
     },
     {
       "description": "group minor, patch and digest updates of GitHub Actions.",
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
       "groupName": "GitHub Actions (non-major)",
-      "groupSlug": "github-actions-minor-patch"
+      "groupSlug": "github-actions-non-major"
     },
     {
       "description": "major updates for manual intervention.",
