@@ -3,7 +3,6 @@
   "files": {
     "includes": [
       "**",
-      "!**/*.astro", // Managed by ESLint + Prettier
       "!**/*.yml", // Ignore unsupported (in progress) file types
       "!**/*.yaml",
       "!**/*.md"
@@ -16,7 +15,13 @@
   },
   "linter": {
     "rules": {
-      "preset": "recommended"
+      "preset": "recommended",
+      // Astro rules are still in nursery, so enable them explicitly
+      "nursery": {
+        "noAstroConflictingSetDirectives": "error",
+        "noAstroSetHtmlDirective": "error",
+        "useAstroClientOnlyDirectiveValue": "error"
+      }
     }
   },
   "assist": {
@@ -41,6 +46,8 @@
     }
   },
   "html": {
+    // Enable lint and format for .astro files
+    "experimentalFullSupportEnabled": true,
     "formatter": {
       "enabled": true,
       "selfCloseVoidElements": "always"
