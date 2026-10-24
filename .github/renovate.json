@@ -8,6 +8,11 @@
   "schedule": ["* 0-4 * * *"],
   "packageRules": [
     {
+      "description": "align npm minimumReleaseAge with pnpm-workspace.yaml (overrides 3 days from security:minimumReleaseAgeNpm).",
+      "matchDatasources": ["npm"],
+      "minimumReleaseAge": "14 days"
+    },
+    {
       "description": "automerge minor, patch and digest updates.",
       "matchUpdateTypes": ["minor", "patch", "digest", "pinDigest"],
       "automerge": true,
