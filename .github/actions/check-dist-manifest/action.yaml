@@ -23,7 +23,7 @@ runs:
         find dist -type f -print0 | sort -z | xargs -0 sha256sum > .candidate.manifest
 
     - name: Restore cached manifest
-      uses: actions/cache/restore@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       id: cache
       with:
         path: .live.manifest
@@ -53,7 +53,7 @@ runs:
 
     - name: Save cached manifest
       if: inputs.update-cache == 'true' && steps.compare.outputs.is-dirty == 'true'
-      uses: actions/cache/save@27d5ce7f107fe9357f9df03efb73ab90386fccae # v5.0.5
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         path: .live.manifest
         key: dist-manifest-${{ github.run_id }}
