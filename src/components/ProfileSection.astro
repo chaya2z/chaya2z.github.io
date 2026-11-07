@@ -1,0 +1,43 @@
+---
+import LinkCard, { type LinkItem } from "./LinkCard.astro";
+
+type Props = {
+  links: LinkItem[];
+};
+
+const { links } = Astro.props;
+---
+
+<div
+  class="relative z-10 flex w-[30%] flex-col p-15 px-10 max-2xl:w-120 max-2xl:shrink-0 max-md:z-20 max-md:min-h-screen max-md:w-full max-md:shrink max-md:bg-midnight-bg/60 max-md:p-8 max-md:px-6 max-md:backdrop-blur-lg"
+>
+  <div class="flex grow flex-col justify-center">
+    <header class="relative z-10 mb-12.5">
+      <span class="text-sm font-bold uppercase tracking-widest text-ice-blue">
+        Site Reliability Engineer
+      </span>
+      <h1
+        class="mt-1.25 mb-0 text-5xl font-extrabold leading-none text-cool-white"
+      >
+        Taisuke NAKANO
+      </h1>
+      <p class="mt-2.5 mb-5 font-mono text-lg text-slate-text opacity-70">
+        @chaya2z
+      </p>
+      <div class="h-1 w-15 bg-accent-red" aria-hidden="true"></div>
+    </header>
+
+    <nav class="z-10 flex flex-col gap-3.75">
+      {links.map((link) => <LinkCard {...link} />)}
+    </nav>
+  </div>
+
+  <footer class="mt-auto pt-10 font-bold uppercase">
+    <a
+      href="https://github.com/chaya2z/chaya2z.github.io"
+      class="font-mono text-slate-text no-underline transition-colors hover:text-ice-blue"
+    >
+      source
+    </a>
+  </footer>
+</div>

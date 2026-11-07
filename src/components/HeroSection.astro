@@ -1,0 +1,22 @@
+---
+type Props = {
+  backgroundSrc: string;
+};
+
+const { backgroundSrc } = Astro.props;
+---
+
+<div
+  class="relative h-full w-[70%] overflow-hidden max-2xl:flex-1 max-md:fixed max-md:inset-0 max-md:z-10 max-md:h-full max-md:w-full"
+>
+  <div
+    class="absolute inset-0 z-10 hidden bg-midnight-bg/40 max-md:block"
+    aria-hidden="true"
+  ></div>
+  <slot />
+  <img
+    src={backgroundSrc}
+    alt=""
+    class="image-pixelated h-full w-full object-cover max-md:blur-[2px]"
+  />
+</div>
