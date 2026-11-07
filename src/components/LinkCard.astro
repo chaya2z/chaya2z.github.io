@@ -1,0 +1,21 @@
+---
+export type LinkItem = {
+  href: string;
+  label: string;
+  urlDisplay: string;
+};
+
+type Props = LinkItem;
+
+const { href, label, urlDisplay } = Astro.props;
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="flex items-center justify-between p-4 px-6 rounded-sm border border-white/5 bg-white/3 text-slate-text no-underline backdrop-blur-sm transition-all duration-300 ease-in-out hover:translate-x-2 hover:border-ice-blue/40 hover:bg-ice-blue/5 hover:text-ice-blue"
+>
+  <span class="text-lg font-bold">{label}</span>
+  <span class="opacity-50">{urlDisplay}</span>
+</a>
